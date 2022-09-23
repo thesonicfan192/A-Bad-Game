@@ -44,12 +44,10 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Menu Backround"
     },
-    "anim1": {
-        "namespace": "myAnimations",
-        "id": "anim1",
-        "mimeType": "application/mkcd-animation",
-        "data": "YzgwMDA4MDAwODAwMDYwMDAwYmJiYjAwYjA1NTU1MGI1YjNkZDNiNTViNTMxNWI1NWM1MzE1Y2RkYzFkZDFjZGYwZGRkZDBmMDBmZmZmMDAwMGJiMGIwMGIwNTViNTAwNWIzZDVkMGI1YjUzNTEwYjVjNTNkMTBjNWMxZGRkMGNmMGRkZmQwMDAwZmYwZjAwMDBiMDBiMDAwMDViYjUwMGIwZDU1MTBiYjAzNTUxMGJjMDM1ZDEwY2MwMTVkZDBjMDBkZmZkMDAwMGYwMGYwMDAwYjAwYjAwMDA1YmI1MDAwMDFiYjEwMDAwNWJiNTAwMDBkYmJkMDAwMGRjY2QwMDAwM2NjMzAwMDBmMDBmMDAwMGIwMGIwMDAwNWJiNTAwYjAxNTVkMGJiMDE1NTMwYmMwMWQ1MzBjYzBkZDUxMGMwMGRmZmQwMDAwZjAwZjAwMDBiMGJiMDAwMDViNTUwYmIwZDVkM2I1YjAxNTM1YjVjMDFkMzVjNWMwZGRkMWM1MDBkZmRkMGYwMGYwZmYwMA==",
-        "displayName": "myAnim"
+    "image9": {
+        "data": "hwQQABAAAAAAAAAAAAC7uwAAAAAAALu7DwAAAAAAu7vwu7u7u7u7u/C7u7u7uwAAAL///7+7AAAAv7u7u78AAAD7u7v7uwAAAPu7u7u/AAAAv7u7u7sAAAC///+/uwAA8Lu7u7u7AADwu7u7u7u7uw8AAAAAALu7AAAAAAAAu7sAAAAAAAC7uw==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Enemy"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",

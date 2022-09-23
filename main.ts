@@ -22,6 +22,8 @@ function StartNextLevel () {
         controller.player2.moveSprite(Player2, 0, 0)
         controller.moveSprite(Cursor)
         scene.cameraFollowSprite(Cursor)
+        Level1.destroy()
+        Level2.destroy()
     } else if (current_level == 2) {
         tiles.setTilemap(tilemap`level2`)
         Level4 = sprites.create(img`
@@ -50,6 +52,9 @@ function StartNextLevel () {
         controller.player2.moveSprite(Player2, 0, 0)
         controller.moveSprite(Cursor)
         scene.cameraFollowSprite(Cursor)
+        Level1.destroy()
+        Level2.destroy()
+        Level3.destroy()
     } else if (current_level == 3) {
         tiles.setTilemap(tilemap`level2`)
         Level5 = sprites.create(img`
@@ -78,6 +83,10 @@ function StartNextLevel () {
         controller.player2.moveSprite(Player2, 0, 0)
         controller.moveSprite(Cursor)
         scene.cameraFollowSprite(Cursor)
+        Level1.destroy()
+        Level2.destroy()
+        Level3.destroy()
+        Level4.destroy()
     } else {
         tiles.setTilemap(tilemap`level2`)
         effects.confetti.startScreenEffect()
@@ -244,6 +253,11 @@ sprites.onOverlap(SpriteKind.Cursor, SpriteKind.Level5, function (sprite, otherS
         tiles.setTilemap(tilemap`level17`)
         tiles.placeOnTile(Player1, tiles.getTileLocation(0, 23))
         tiles.placeOnTile(Player2, tiles.getTileLocation(0, 23))
+        Level1.destroy()
+        Level2.destroy()
+        Level3.destroy()
+        Level4.destroy()
+        Level5.destroy()
     }
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -274,14 +288,23 @@ sprites.onOverlap(SpriteKind.Cursor, SpriteKind.Level2, function (sprite, otherS
             tiles.placeOnTile(Player1, tiles.getTileLocation(14, 7))
             scene.cameraFollowSprite(Player1)
             tiles.placeOnTile(Player2, tiles.getTileLocation(11, 7))
+            SpawnEnemies()
             controller.moveSprite(Player1, 100, 0)
             controller.player2.moveSprite(Player2, 100, 0)
             Player1.ay = 150
             Player2.ay = 150
             Game_Start = 1
+            Level1.destroy()
+            Level2.destroy()
         }
     }
 })
+function SpawnEnemies () {
+    for (let value of tiles.getTilesByType(assets.tile`EnemySpawn`)) {
+        EnemySprite = sprites.create(assets.image`Enemy`, SpriteKind.Enemy)
+        tiles.placeOnTile(EnemySprite, value)
+    }
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Game_Start == 1) {
         if (GamePause == 1) {
@@ -644,6 +667,9 @@ sprites.onOverlap(SpriteKind.Cursor, SpriteKind.Level3, function (sprite, otherS
         tiles.setTilemap(tilemap`level10`)
         tiles.placeOnTile(Player1, tiles.getTileLocation(4, 43))
         tiles.placeOnTile(Player2, tiles.getTileLocation(0, 43))
+        Level1.destroy()
+        Level2.destroy()
+        Level3.destroy()
     }
 })
 sprites.onOverlap(SpriteKind.Cursor, SpriteKind.Level4, function (sprite, otherSprite) {
@@ -779,6 +805,10 @@ sprites.onOverlap(SpriteKind.Cursor, SpriteKind.Level4, function (sprite, otherS
         tiles.setTilemap(tilemap`level14`)
         tiles.placeOnTile(Player1, tiles.getTileLocation(4, 43))
         tiles.placeOnTile(Player2, tiles.getTileLocation(0, 43))
+        Level1.destroy()
+        Level2.destroy()
+        Level3.destroy()
+        Level4.destroy()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
@@ -851,14 +881,26 @@ blockMenu.onMenuOptionSelected(function (option, index) {
     	
     }
 })
-let Level2: Sprite = null
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    if (Player1.ay == 0) {
+        info.changeLifeBy(-1)
+    } else if (Player1.ay < 0) {
+        otherSprite.destroy()
+        sprite.ay = 100
+        info.changeScoreBy(100)
+    } else {
+    	
+    }
+})
 let IsPlayer2Connected = 0
 let BrokenJump = 0
+let EnemySprite: Sprite = null
 let Game_Start = 0
-let Level1: Sprite = null
 let GamePause = 0
 let Level5: Sprite = null
 let Level4: Sprite = null
+let Level2: Sprite = null
+let Level1: Sprite = null
 let Player2: Sprite = null
 let Player1: Sprite = null
 let Level3: Sprite = null
@@ -1205,4 +1247,7 @@ game.onUpdate(function () {
             }
         }
     }
+})
+game.onUpdate(function () {
+	
 })
